@@ -4,3 +4,9 @@ TRAM_INFO_FOLDER = 'GTFS_KRK_T'
 BUS_POSITIONS_PATH = 'VehiclePositions_A'
 TRAM_POSITIONS_PATH = 'VehiclePositions_T'
 SEC_IN_DAY = 24 * 60 * 60
+MIN_STOP_NUMBER = 5
+
+# gtfs-realtime VehicleStopStatus
+INCOMING_AT = 0
+STOPPED_AT = 1
+IN_TRANSIT_TO = 2
