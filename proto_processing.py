@@ -1,42 +1,34 @@
+import datetime
+import os
+from collections import defaultdict
+
+from tqdm import tqdm
+from google.transit import gtfs_realtime_pb2
+
+from TripManager import TripManager
+import gtfs_extraction as ext
+
+
 def pb2datetime(filename):
     current_date = datetime.datetime.strptime(filename, '%Y%m%d%H%M%S.pb')
     return current_date
 
 
-def process_entity(entity, informant, trips, delays):
-    stop_id = entity.vehicle.stop_id
-    timestamp = entity.vehicle.timestamp
-    license_plate = entity.vehicle.vehicle.license_plate
+def process_entity(entity, informant, trips, delays, stat_tracker=None):
+    timestamp = ext.get_epoch_time(entity)
+    license_plate = ext.get_license_plate(entity)
 
     if license_plate in trips:
         info = trips[license_plate]
-        trip_id = entity.vehicle.trip.trip_id
-        try:
-            route = informant.trip2route(trip_id)
-        except KeyError:
-            route = ""
-
-        if not info.is_correct(route):
-            trips[license_plate].save_delays(delays)
-            try:
-                info = TripManager(entity, informant)
-            except KeyError:
-                return timestamp
-            trips[license_plate] = info
-        else:
-            info.update(stop_id, timestamp, entity)
+        info.update(entity)
     else:
-        try:
-            info = TripManager(entity, informant)
-        except KeyError:
-            return timestamp
-
+        info = TripManager(entity, informant, delays, stat_tracker)
         trips[license_plate] = info
 
     return timestamp
 
 
-def process_positions(postitons_path, informant):
+def process_positions(postitons_path, informant, stat_tracker=None):
     trips = dict()
     delays = defaultdict(lambda: defaultdict(lambda: defaultdict(lambda: [])))
 
@@ -46,8 +38,9 @@ def process_positions(postitons_path, informant):
     iterator = tqdm(sorted(os.listdir(postitons_path)), position=0)
     for i, filename in enumerate(iterator):
         current_date = pb2datetime(filename)
-        iterator.set_description(f'{current_date} | inactive={trips_deleted}')
-        informant.update(current_date)
+        table_name = informant.update(current_date)
+
+        iterator.set_description(f'{table_name} | {current_date} | inactive={trips_deleted}')
 
         with open(f'{postitons_path}/{filename}', "rb") as f:
             try:
@@ -59,7 +52,7 @@ def process_positions(postitons_path, informant):
 
         timestamp = 0
         for entity in feed.entity:
-            timestamp = max(process_entity(entity, informant, trips, delays), timestamp)
+            timestamp = max(process_entity(entity, informant, trips, delays, stat_tracker), timestamp)
 
         if i % 10 == 0 and timestamp != 0:
             inactive = set()
@@ -70,10 +63,10 @@ def process_positions(postitons_path, informant):
             trips_deleted = len(inactive)
 
             for license_plate in inactive:
-                trips[license_plate].save_delays(delays)
+                trips[license_plate].save_delays()
                 trips.pop(license_plate)
 
     for k, v in trips.items():
-        v.save_delays(delays)
+        v.save_delays()
 
     return delays
