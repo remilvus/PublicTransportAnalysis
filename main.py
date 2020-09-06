@@ -1,8 +1,9 @@
-from TableManager import TableManager
-from Constants import *
-import matplotlib.pyplot as plt
-from mapper import visualise
 from proto_processing import *
+
+from Constants import *
+from StatManager import StatManager
+from TableManager import TableManager
+import visualization
 
 
 if __name__ == "__main__":
@@ -11,24 +12,25 @@ if __name__ == "__main__":
     bus_positions_path = f'{DATA_PATH}/{BUS_POSITIONS_PATH}'
     tram_positions_path = f'{DATA_PATH}/{BUS_POSITIONS_PATH}'
 
+    #  bus processing
+    bus_stat_tracker = StatManager()
 
     informant = TableManager(bus_informant_path)
-    delays = process_positions(bus_positions_path, informant)
-    stop2loc = informant.current_info["stop2loc"]
+    delays = process_positions(bus_positions_path, informant, bus_stat_tracker)
+    stop2location = informant.get_stop2location()
+
+    bus_stat_tracker.summarise("Buses")
+
+    #  tram processing
+
+    tram_stat_tracker = StatManager()
 
     informant = TableManager(tram_informant_path)
-    delays.update(process_positions(tram_positions_path, informant))
-    stop2loc.update(informant.current_info["stop2loc"])
+    delays.update(process_positions(tram_positions_path, informant, tram_stat_tracker))
+    stop2location.update(informant.get_stop2location())
 
-    visualise(stop2loc, delays)
+    tram_stat_tracker.summarise("Trams")
 
-    x = []
-    for route, bus_bus_delays in delays.items():
-        for stop, d in bus_bus_delays.items():
-            for delay, count in d.items():
-                x += count
+    visualization.make_map(stop2location, delays)
 
-    plt.figure(figsize=(8, 8), facecolor='w')
-    plt.yscale('log')
-    plt.hist(list(map(lambda q: q//60, x)), bins=50)
-    plt.show()
+    visualization.hist(delays)
