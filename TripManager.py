@@ -192,9 +192,12 @@ class TripManager:
     def _route_check(self, entity):
         if self._broken:
             return
-        trip_id = ext.get_trip_id(entity)
-        if self._route != self.informant.trip2route(trip_id):
-            if self.stat_tracker: self.stat_tracker.route_change += 1
+        try:
+            trip_id = ext.get_trip_id(entity)
+            if self._route != self.informant.trip2route(trip_id):
+                if self.stat_tracker: self.stat_tracker.route_change += 1
+        except KeyError:
+            pass
 
     def _stop_changed(self, stop_id):
         return self._last_stop != stop_id
