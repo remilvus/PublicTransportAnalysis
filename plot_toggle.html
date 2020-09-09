@@ -1,0 +1,16 @@
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script>
+    function plot_toggle(stop, route){
+        divs = document.getElementsByClassName('delay_plot');
+        if(route === "all_routes"){
+            for (var i = 0, l = divs.length; i < l; i++) {
+                divs[i].style.display = 'block';
+            }
+        } else {
+            for (var i = 0, l = divs.length; i < l; i++) {
+                divs[i].style.display = 'none';
+            }
+        }
+        document.getElementsByClassName(stop + '_' + route)[0].style.display='block';
+    }
+</script>
