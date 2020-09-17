@@ -23,7 +23,6 @@ lines visualised on a plot (mean and std per hour).
 Example output: `map_example_small.html` (it covers only a small portion
 of all stops as the complete map is quite big - over 100MB).
 
-## What's to be improved:
-- Trip validation.
-- Map size. It should be possible to make the map smaller 
-as many chunks of the html & js code are often repeated.
+## To do:
+- better trip validation
+- Frontend in React
