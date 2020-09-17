@@ -1,5 +1,6 @@
-from proto_processing import *
+import json
 
+from proto_processing import *
 from Constants import *
 from StatManager import StatManager
 from TableManager import TableManager
@@ -31,6 +32,23 @@ if __name__ == "__main__":
 
     tram_stat_tracker.summarise("Trams")
 
-    visualization.make_map(stop2location, delays)
+    filtered_data = dict(dict(dict(dict())))
+    for mode, mode_data in delays.items():
+        filtered_data[mode] = dict()
+        for stop, stop_data in mode_data.items():
+            filtered_data[mode][stop] = dict()
+            for line, line_data in stop_data.items():
+                filtered_data[mode][stop][line] = dict()
+                for planned, dels in line_data.items():
+                    vehicle_delays = delays[mode][stop][line][planned]
+                    if len(vehicle_delays) > 2:
+                        filtered_data[mode][stop][line][planned] = vehicle_delays
 
-    visualization.hist(delays)
+    with open("delay_info.json", "w") as f:
+        f.write(json.dumps(filtered_data))
+
+    with open("stop2location.json", "w") as f:
+        json.dump(stop2location, f)
+    visualization.make_map(stop2location, filtered_data)
+
+    visualization.hist(filtered_data)
