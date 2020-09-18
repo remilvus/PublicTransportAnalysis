@@ -6,6 +6,10 @@ def get_trip_id(entity):
     return entity.vehicle.trip.trip_id
 
 
+def get_service(entity):
+    return int(get_trip_id(entity)[-1])
+
+
 def get_epoch(entity):
     return entity.vehicle.timestamp
 
