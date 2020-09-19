@@ -19,7 +19,7 @@ last_pull = {name: -1 for name in filenames}
 #  contents of last file
 last_file = {name: None for name in filenames}
 
-DATA_PATH = 'data'
+DATA_PATH = '../data'
 MIME_FOLDER = 'application/vnd.google-apps.folder'
 
 
@@ -32,8 +32,8 @@ def get_credentials():
     # The file token.pickle stores the user's access and refresh tokens, and is
     # created automatically when the authorization flow completes for the first
     # time.
-    if os.path.exists('token.pickle'):
-        with open('token.pickle', 'rb') as token:
+    if os.path.exists('../token.pickle'):
+        with open('../token.pickle', 'rb') as token:
             credentials = pickle.load(token)
     # If there are no (valid) credentials available, let the user log in.
     if not credentials or not credentials.valid:
@@ -41,10 +41,10 @@ def get_credentials():
             credentials.refresh(Request())
         else:
             flow = InstalledAppFlow.from_client_secrets_file(
-                'credentials.json', scopes)
+                '../credentials.json', scopes)
             credentials = flow.run_local_server(port=0)
         # Save the credentials for the next run
-        with open('token.pickle', 'wb') as token:
+        with open('../token.pickle', 'wb') as token:
             pickle.dump(credentials, token)
 
     return credentials
@@ -116,8 +116,8 @@ def save_file(ftp: ftplib.FTP, filename: str, save_as: str, drive_client=None, d
     directory = os.path.join('data', folder)
 
     # check/prepare data folder
-    if not os.path.exists('data'):
-        os.mkdir('data')
+    if not os.path.exists('../data'):
+        os.mkdir('../data')
     if not os.path.exists(directory):
         os.mkdir(directory)
 

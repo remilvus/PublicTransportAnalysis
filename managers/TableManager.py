@@ -5,7 +5,7 @@ import pandas as pd
 
 from zipfile import ZipFile
 
-from Constants import SEC_IN_DAY
+from utilities.Constants import SEC_IN_DAY
 
 
 class TableManager:

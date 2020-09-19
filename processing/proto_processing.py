@@ -5,8 +5,8 @@ from collections import defaultdict
 from tqdm import tqdm
 from google.transit import gtfs_realtime_pb2
 
-from TripManager import TripManager
-import gtfs_extraction as ext
+from managers.TripManager import TripManager
+from utilities import gtfs_extraction as ext
 
 
 def pb2datetime(filename):

@@ -3,7 +3,8 @@ from collections import defaultdict
 import numpy as np
 import hdbscan
 
-import time_formating as time_form
+from utilities import time_formating as time_form
+
 
 # statistics calculation
 def append_delay_stats(collector, t, delays):

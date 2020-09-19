@@ -1,7 +1,8 @@
 import os
-from Constants import DATA_PATH
 
 # script removing duplicate files from directories under DATA_PATH
+
+DATA_PATH = "../data"
 
 if __name__ == "__main__":
 

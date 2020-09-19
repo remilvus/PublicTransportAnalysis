@@ -1,10 +1,11 @@
 import json
 
-from proto_processing import *
-from Constants import *
-from StatManager import StatManager
-from TableManager import TableManager
-import result_calculation
+from processing.proto_processing import *
+from utilities.Constants import *
+from managers.StatManager import StatManager
+from managers.TableManager import TableManager
+from processing import result_calculation
+
 #import visualization
 
 
@@ -18,7 +19,7 @@ if __name__ == "__main__":
     bus_stat_tracker = StatManager()
 
     informant = TableManager(bus_informant_path)
-    delays, arrivals = process_positions(bus_positions_path, informant, bus_stat_tracker)
+    vehicle_delays, arrivals = process_positions(bus_positions_path, informant, bus_stat_tracker)
     stop2location = informant.get_stop2location()
 
     bus_stat_tracker.summarise("Buses")
@@ -28,7 +29,7 @@ if __name__ == "__main__":
 
     informant = TableManager(tram_informant_path)
     tram_delays, tram_arrivals = process_positions(tram_positions_path, informant, tram_stat_tracker)
-    delays.update(tram_delays)
+    vehicle_delays.update(tram_delays)
     arrivals.update(tram_arrivals)
     stop2location.update(informant.get_stop2location())
 
@@ -40,7 +41,7 @@ if __name__ == "__main__":
     # todo: assign shorter names to every stop
 
     data_package = dict()
-    data_package["vehicle_delays"] = result_calculation.process_delays(delays)
+    data_package["vehicle_delays"] = result_calculation.process_delays(vehicle_delays)
     data_package["recovered_schedule"] = result_calculation.calculate_schedule(arrivals)
     data_package["stop2location"] = stop2location
     # data_package["stop2name"] =

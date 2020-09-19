@@ -6,7 +6,7 @@ import plotly.express as px
 import folium
 from folium.plugins import MarkerCluster
 from tqdm import tqdm
-from Constants import PLOT_TIME_STEP, SEC_IN_DAY
+from utilities.Constants import PLOT_TIME_STEP, SEC_IN_DAY
 
 
 # time formatting

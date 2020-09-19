@@ -1,9 +1,9 @@
 from collections import defaultdict
 
-from Constants import SEC_IN_DAY, MIN_STOP_NUMBER, MAX_BUS_INACTIVITY
-from StatManager import StatManager
-from TableManager import TableManager
-import gtfs_extraction as ext
+from utilities.Constants import SEC_IN_DAY, MIN_STOP_NUMBER, MAX_BUS_INACTIVITY
+from managers.StatManager import StatManager
+from managers.TableManager import TableManager
+from utilities import gtfs_extraction as ext
 
 
 class TripManager:
