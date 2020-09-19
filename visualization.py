@@ -88,6 +88,8 @@ def stats2html_plot(delay_info, classname, title, display='block'):
 
 
 def make_map(stops, accumulated_delays):
+    accumulated_delays = accumulated_delays[1]
+
     krk = folium.Map(location=[50.083795, 19.926412])
 
     cluster = MarkerCluster()
@@ -96,9 +98,12 @@ def make_map(stops, accumulated_delays):
     with open("plot_toggle.html") as f:
         plot_toggle = f.read()
 
-    progress_bar = tqdm(list(stops.items())[:100])
+    progress_bar = tqdm(list(stops.items()))
+
     ignored_stops = 0
     for stop, location in progress_bar:
+        if stop not in accumulated_delays:
+            continue
         general_stats = calculate_general_stats(accumulated_delays[stop].values())
         route_stats = calculate_route_stats(accumulated_delays[stop].items())
 
