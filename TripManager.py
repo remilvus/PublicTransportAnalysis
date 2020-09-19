@@ -8,12 +8,13 @@ import gtfs_extraction as ext
 
 class TripManager:
     # initialization
-    def __init__(self, entity, informant: TableManager, delay_collector, stat_tracker: StatManager = None):
+    def __init__(self, entity, informant: TableManager, delay_collector, arrival_collector, stat_tracker: StatManager = None):
         self.informant = informant
         self.license_plate = ext.get_license_plate(entity)
         self.inactivity_limit = MAX_BUS_INACTIVITY
         self.stat_tracker = stat_tracker
         self.delay_collector = delay_collector
+        self.arrival_collector = arrival_collector
 
         self._init_dynamic_info(entity)
 
@@ -22,10 +23,10 @@ class TripManager:
         # setting flags & buffers
         self._fix_state = False
         self._broken = False
-        self._delays = defaultdict(lambda: defaultdict(lambda: []))
+        self._delays = defaultdict(lambda: defaultdict(lambda: defaultdict(lambda: [])))
         self._arrivals = []
         self._candidate_routes = None
-
+        self.service = ext.get_service(entity)
         # extracting information from gtfs entity & tables
         try:
             trip_id = ext.get_trip_id(entity)
@@ -64,7 +65,7 @@ class TripManager:
                 self.stat_tracker.bad_epoch_time += 1
             else:
                 self.stat_tracker.good_epoch_time += 1
-        
+
         # todo: better epoch_time tracking (keep track of biggest seen value & manage too big changes)
         if epoch_time != 0 and not self._broken and self._stop_changed(stop_id):
             if self.stat_tracker:
@@ -94,10 +95,15 @@ class TripManager:
         if self.stat_tracker: self.stat_tracker.good_trips += 1
 
         self._calculate_delays()
-        for stop, delay_info in self._delays.items():
-            for planned_time, delays in delay_info.items():
-                self.delay_collector[stop][self.short_name][planned_time] += delays
-                if self.stat_tracker: self.stat_tracker.data_points += len(delays)
+        for stop, service_delay_info in self._delays.items():
+            for service, delay_info in service_delay_info.items():
+                for planned_time, delays in delay_info.items():
+                    self.delay_collector[service][stop][self.short_name][planned_time] += delays
+                    if self.stat_tracker: self.stat_tracker.data_points += len(delays)
+
+        for (stop, arrival) in self._arrivals:
+            self.arrival_collector[self.service][stop][self.short_name].append(arrival)
+
 
     def is_alive(self, epoch_time):
         return (epoch_time - self._last_epoch) < self.inactivity_limit
@@ -123,7 +129,7 @@ class TripManager:
                              delay_plan)
             best_fit = sorted(delay_plan, key=self._weigh_delay)[0]
 
-            self._delays[stop_id][best_fit[1]].append(best_fit[0])
+            self._delays[stop_id][self.service][best_fit[1]].append(best_fit[0])
 
     @staticmethod
     def _fix_midnight(seconds):
@@ -144,7 +150,7 @@ class TripManager:
     # # methods related to determining the true route
     def _fix(self, entity):
         assert not self._fix_state
-        
+
         if self.stat_tracker: self.stat_tracker.trip_fix_requests += 1
 
         stop_id = ext.get_stop_id(entity)
@@ -154,10 +160,10 @@ class TripManager:
             candidates &= stop2routes(stop)
 
         if len(candidates) == 1:
-            
+
             # todo: reset only part of information about trip; already collected stop times should be correct
-            self._reset(entity)  
-            
+            self._reset(entity)
+
             if self.stat_tracker: self.stat_tracker.fix_result["fixed"] += 1
             return
 
@@ -181,7 +187,7 @@ class TripManager:
 
             # todo: reset only part of information about trip; already collected stop times should be correct
             self._reset(entity)
-            
+
             if self.stat_tracker: self.stat_tracker.fix_result["fixed"] += 1
 
     def _reset(self, entity):

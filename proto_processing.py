@@ -14,7 +14,7 @@ def pb2datetime(filename):
     return current_date
 
 
-def process_entity(entity, informant, trips, delays, stat_tracker=None):
+def process_entity(entity, informant, trips, delays, arrivals, stat_tracker=None):
     timestamp = ext.get_epoch_time(entity)
     license_plate = ext.get_license_plate(entity)
 
@@ -22,27 +22,28 @@ def process_entity(entity, informant, trips, delays, stat_tracker=None):
         info = trips[license_plate]
         info.update(entity)
     else:
-        info = TripManager(entity, informant, delays, stat_tracker)
+        info = TripManager(entity, informant, delays, arrivals, stat_tracker)
         trips[license_plate] = info
 
     return timestamp
 
 
-def process_positions(postitons_path, informant, stat_tracker=None):
+def process_positions(positions_path, informant, stat_tracker=None):
     trips = dict()
-    delays = defaultdict(lambda: defaultdict(lambda: defaultdict(lambda: [])))
+    delays = defaultdict(lambda: defaultdict(lambda: defaultdict(lambda: defaultdict(lambda: []))))
+    arrivals = defaultdict(lambda: defaultdict(lambda: defaultdict(lambda: [])))
 
     feed = gtfs_realtime_pb2.FeedMessage()
 
     trips_deleted = 0
-    iterator = tqdm(sorted(os.listdir(postitons_path)), position=0)
+    iterator = tqdm(sorted(os.listdir(positions_path)), position=0)
     for i, filename in enumerate(iterator):
         current_date = pb2datetime(filename)
         table_name = informant.update(current_date)
 
         iterator.set_description(f'{table_name} | {current_date} | inactive={trips_deleted}')
 
-        with open(f'{postitons_path}/{filename}', "rb") as f:
+        with open(f'{positions_path}/{filename}', "rb") as f:
             try:
                 feed.ParseFromString(f.read())
             except Exception as err:
@@ -52,7 +53,7 @@ def process_positions(postitons_path, informant, stat_tracker=None):
 
         timestamp = 0
         for entity in feed.entity:
-            timestamp = max(process_entity(entity, informant, trips, delays, stat_tracker), timestamp)
+            timestamp = max(process_entity(entity, informant, trips, delays, arrivals, stat_tracker), timestamp)
 
         if i % 10 == 0 and timestamp != 0:
             inactive = set()
@@ -69,4 +70,4 @@ def process_positions(postitons_path, informant, stat_tracker=None):
     for k, v in trips.items():
         v.save_delays()
 
-    return delays
+    return delays, arrivals
