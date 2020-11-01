@@ -10,15 +10,6 @@ def fix_time(t):
     return t % const.SEC_IN_DAY
 
 
-def round_time(t, resolution=const.PLOT_TIME_STEP):
-    """
-    :param t: time of day in seconds
-    :param resolution: specifies resolution of returned value (in seconds)
-    :return: rounded time (in seconds)
-    """
-    return int(round(t / resolution)) * resolution
-
-
 def human_time(t):
     """
     :param t: time of day in seconds
