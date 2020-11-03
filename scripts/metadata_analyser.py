@@ -4,8 +4,8 @@ from datetime import datetime
 from io import BytesIO
 
 # names of all GTFS files that are to be archived
-filenames = {'GTFS_KRK_T.zip', 'VehiclePositions_T.pb', 'TripUpdates_T.pb', 'TripUpdates_A.pb', 'GTFS_KRK_A.zip',
-             'ServiceAlerts_T.pb', 'ServiceAlerts_A.pb', 'VehiclePositions_A.pb'}
+filenames = ['GTFS_KRK_T.zip', 'VehiclePositions_T.pb', 'TripUpdates_T.pb', 'TripUpdates_A.pb', 'GTFS_KRK_A.zip',
+             'ServiceAlerts_T.pb', 'ServiceAlerts_A.pb', 'VehiclePositions_A.pb']
 # saved properties
 file_properties = ['size', 'modify', 'create']
 time_format = '%d/%m/%Y %H:%M:%S'
