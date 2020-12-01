@@ -1,2 +1,4 @@
 # PublicTransportAnalysis
-Project is under construction (this time in a proper way).
+Project is under construction.
+
+[Protorype can be found here](https://github.com/remilvus/PublicTransportAnalysis/tree/master)
