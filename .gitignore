@@ -3,3 +3,5 @@
 credentials.json
 token.pickle
 /venv
+/.venv
+.ipynb_checkpoints
