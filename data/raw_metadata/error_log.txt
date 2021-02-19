@@ -1,0 +1,330 @@
+30/11/2020 15:27:50	|	426 Transfer aborted: Resource temporarily unavailable.
+30/11/2020 15:30:48	|	426 Transfer aborted: Resource temporarily unavailable.
+30/11/2020 17:49:25	|	
+30/11/2020 20:21:25	|	
+30/11/2020 21:08:51	|	426 Transfer aborted: Resource temporarily unavailable.
+30/11/2020 21:29:52	|	426 Transfer aborted: Resource temporarily unavailable.
+30/11/2020 21:31:22	|	426 Transfer aborted: Resource temporarily unavailable.
+30/11/2020 23:44:25	|	
+01/12/2020 01:45:55	|	
+01/12/2020 04:35:52	|	timed out
+01/12/2020 04:37:56	|	timed out
+01/12/2020 04:40:00	|	timed out
+01/12/2020 04:42:04	|	timed out
+01/12/2020 04:44:08	|	timed out
+01/12/2020 04:46:13	|	timed out
+01/12/2020 05:28:31	|	426 Transfer aborted: Resource temporarily unavailable.
+01/12/2020 06:58:29	|	426 Transfer aborted: Resource temporarily unavailable.
+01/12/2020 07:35:59	|	426 Transfer aborted: Resource temporarily unavailable.
+01/12/2020 07:46:29	|	426 Transfer aborted: Resource temporarily unavailable.
+01/12/2020 08:40:44	|	426 Transfer aborted: Resource temporarily unavailable.
+01/12/2020 10:04:33	|	426 Transfer aborted: Resource temporarily unavailable.
+01/12/2020 10:54:16	|	426 Transfer aborted: Resource temporarily unavailable.
+01/12/2020 11:06:18	|	426 Transfer aborted: Resource temporarily unavailable.
+01/12/2020 12:03:19	|	426 Transfer aborted: Resource temporarily unavailable.
+01/12/2020 13:06:11	|	426 Transfer aborted: Resource temporarily unavailable.
+01/12/2020 13:16:52	|	426 Transfer aborted: Resource temporarily unavailable.
+01/12/2020 14:15:20	|	426 Transfer aborted: Resource temporarily unavailable.
+01/12/2020 15:28:02	|	426 Transfer aborted: Resource temporarily unavailable.
+01/12/2020 15:34:06	|	426 Transfer aborted: Resource temporarily unavailable.
+01/12/2020 15:39:18	|	426 Transfer aborted: Resource temporarily unavailable.
+01/12/2020 15:43:48	|	426 Transfer aborted: Resource temporarily unavailable.
+01/12/2020 16:24:20	|	426 Transfer aborted: Resource temporarily unavailable.
+01/12/2020 16:52:01	|	426 Transfer aborted: Resource temporarily unavailable.
+01/12/2020 17:22:11	|	426 Transfer aborted: Resource temporarily unavailable.
+01/12/2020 18:16:23	|	
+01/12/2020 18:52:56	|	426 Transfer aborted: Resource temporarily unavailable.
+01/12/2020 20:24:34	|	426 Transfer aborted: Resource temporarily unavailable.
+01/12/2020 22:23:05	|	426 Transfer aborted: Resource temporarily unavailable.
+02/12/2020 00:51:53	|	[Errno 104] Connection reset by peer
+02/12/2020 01:47:43	|	[Errno 104] Connection reset by peer
+02/12/2020 02:00:07	|	426 Transfer aborted: Resource temporarily unavailable.
+02/12/2020 04:44:44	|	
+02/12/2020 06:08:30	|	426 Transfer aborted: Resource temporarily unavailable.
+02/12/2020 06:15:56	|	426 Transfer aborted: Resource temporarily unavailable.
+02/12/2020 06:40:34	|	426 Transfer aborted: Resource temporarily unavailable.
+02/12/2020 07:24:59	|	426 Transfer aborted: Resource temporarily unavailable.
+02/12/2020 08:01:10	|	426 Transfer aborted: Resource temporarily unavailable.
+02/12/2020 08:37:44	|	
+02/12/2020 09:43:45	|	426 Transfer aborted: Resource temporarily unavailable.
+02/12/2020 10:49:48	|	426 Transfer aborted: Resource temporarily unavailable.
+02/12/2020 11:20:50	|	426 Transfer aborted: Resource temporarily unavailable.
+02/12/2020 12:37:53	|	426 Transfer aborted: Resource temporarily unavailable.
+02/12/2020 13:11:49	|	426 Transfer aborted: Resource temporarily unavailable.
+02/12/2020 13:44:45	|	426 Transfer aborted: Resource temporarily unavailable.
+02/12/2020 14:34:47	|	421 Timeout (120 seconds): closing control connection
+02/12/2020 15:35:04	|	426 Transfer aborted: Resource temporarily unavailable.
+02/12/2020 16:11:14	|	[Errno 104] Connection reset by peer
+02/12/2020 16:56:54	|	426 Transfer aborted: Resource temporarily unavailable.
+02/12/2020 17:30:00	|	426 Transfer aborted: Resource temporarily unavailable.
+02/12/2020 17:30:44	|	426 Transfer aborted: Resource temporarily unavailable.
+02/12/2020 18:59:59	|	426 Transfer aborted: Resource temporarily unavailable.
+02/12/2020 20:08:44	|	
+02/12/2020 22:40:14	|	
+03/12/2020 00:58:15	|	[Errno 111] Connection refused
+03/12/2020 04:37:45	|	
+03/12/2020 05:56:45	|	426 Transfer aborted: Resource temporarily unavailable.
+03/12/2020 07:30:31	|	426 Transfer aborted: Resource temporarily unavailable.
+03/12/2020 08:35:45	|	
+03/12/2020 09:06:01	|	426 Transfer aborted: Resource temporarily unavailable.
+03/12/2020 11:21:45	|	
+03/12/2020 13:44:45	|	
+03/12/2020 13:50:13	|	timed out
+03/12/2020 13:50:14	|	[Errno -3] Temporary failure in name resolution
+03/12/2020 13:50:15	|	[Errno -3] Temporary failure in name resolution
+03/12/2020 13:50:16	|	[Errno -3] Temporary failure in name resolution
+03/12/2020 13:50:17	|	[Errno -3] Temporary failure in name resolution
+03/12/2020 13:50:18	|	[Errno -3] Temporary failure in name resolution
+03/12/2020 13:50:19	|	[Errno -3] Temporary failure in name resolution
+03/12/2020 13:50:20	|	[Errno -3] Temporary failure in name resolution
+03/12/2020 13:50:21	|	[Errno -3] Temporary failure in name resolution
+03/12/2020 13:50:22	|	[Errno -3] Temporary failure in name resolution
+03/12/2020 13:50:23	|	[Errno -3] Temporary failure in name resolution
+03/12/2020 13:50:24	|	[Errno -3] Temporary failure in name resolution
+03/12/2020 13:50:25	|	[Errno -3] Temporary failure in name resolution
+03/12/2020 13:50:26	|	[Errno -3] Temporary failure in name resolution
+03/12/2020 13:50:27	|	[Errno -3] Temporary failure in name resolution
+03/12/2020 13:50:28	|	[Errno -3] Temporary failure in name resolution
+03/12/2020 13:50:29	|	[Errno -3] Temporary failure in name resolution
+03/12/2020 13:50:30	|	[Errno -3] Temporary failure in name resolution
+03/12/2020 13:50:31	|	[Errno -3] Temporary failure in name resolution
+03/12/2020 13:50:32	|	[Errno -3] Temporary failure in name resolution
+03/12/2020 13:50:33	|	[Errno -3] Temporary failure in name resolution
+03/12/2020 13:50:34	|	[Errno -3] Temporary failure in name resolution
+03/12/2020 13:50:35	|	[Errno -3] Temporary failure in name resolution
+03/12/2020 13:50:36	|	[Errno -3] Temporary failure in name resolution
+03/12/2020 13:50:37	|	[Errno -3] Temporary failure in name resolution
+03/12/2020 13:50:38	|	[Errno -3] Temporary failure in name resolution
+03/12/2020 13:50:39	|	[Errno -3] Temporary failure in name resolution
+03/12/2020 13:50:40	|	[Errno -3] Temporary failure in name resolution
+03/12/2020 13:50:41	|	[Errno -3] Temporary failure in name resolution
+03/12/2020 13:50:42	|	[Errno -3] Temporary failure in name resolution
+03/12/2020 13:50:43	|	[Errno -3] Temporary failure in name resolution
+03/12/2020 13:50:44	|	[Errno -3] Temporary failure in name resolution
+03/12/2020 13:50:45	|	[Errno -3] Temporary failure in name resolution
+03/12/2020 13:50:46	|	[Errno -3] Temporary failure in name resolution
+03/12/2020 13:50:47	|	[Errno -3] Temporary failure in name resolution
+03/12/2020 13:50:48	|	[Errno -3] Temporary failure in name resolution
+03/12/2020 13:50:49	|	[Errno -3] Temporary failure in name resolution
+03/12/2020 13:50:50	|	[Errno -3] Temporary failure in name resolution
+03/12/2020 13:50:51	|	[Errno -3] Temporary failure in name resolution
+03/12/2020 13:50:52	|	[Errno -3] Temporary failure in name resolution
+03/12/2020 13:50:53	|	[Errno -3] Temporary failure in name resolution
+03/12/2020 13:50:54	|	[Errno -3] Temporary failure in name resolution
+03/12/2020 13:50:55	|	[Errno -3] Temporary failure in name resolution
+03/12/2020 13:50:56	|	[Errno -3] Temporary failure in name resolution
+03/12/2020 13:50:57	|	[Errno -3] Temporary failure in name resolution
+03/12/2020 13:50:58	|	[Errno -3] Temporary failure in name resolution
+03/12/2020 13:50:59	|	[Errno -3] Temporary failure in name resolution
+03/12/2020 13:51:00	|	[Errno -3] Temporary failure in name resolution
+03/12/2020 13:51:01	|	[Errno -3] Temporary failure in name resolution
+03/12/2020 13:51:02	|	[Errno -3] Temporary failure in name resolution
+03/12/2020 13:51:03	|	[Errno -3] Temporary failure in name resolution
+03/12/2020 13:51:04	|	[Errno -3] Temporary failure in name resolution
+03/12/2020 13:51:05	|	[Errno -3] Temporary failure in name resolution
+03/12/2020 15:03:37	|	421 Timeout (120 seconds): closing control connection
+03/12/2020 16:24:55	|	426 Transfer aborted: Resource temporarily unavailable.
+03/12/2020 17:10:40	|	426 Transfer aborted: Resource temporarily unavailable.
+03/12/2020 20:41:45	|	
+03/12/2020 23:56:15	|	
+04/12/2020 03:40:50	|	
+04/12/2020 07:10:21	|	
+04/12/2020 07:46:36	|	426 Transfer aborted: Resource temporarily unavailable.
+04/12/2020 07:51:07	|	426 Transfer aborted: Resource temporarily unavailable.
+04/12/2020 08:16:00	|	426 Transfer aborted: Resource temporarily unavailable.
+04/12/2020 08:43:39	|	426 Transfer aborted: Resource temporarily unavailable.
+04/12/2020 08:57:10	|	426 Transfer aborted: Operation now in progress.
+04/12/2020 10:44:22	|	
+04/12/2020 13:16:22	|	
+04/12/2020 13:54:31	|	426 Transfer aborted: Resource temporarily unavailable.
+04/12/2020 14:32:50	|	426 Transfer aborted: Resource temporarily unavailable.
+04/12/2020 16:35:52	|	
+04/12/2020 17:09:31	|	426 Transfer aborted: Resource temporarily unavailable.
+04/12/2020 17:43:28	|	426 Transfer aborted: Resource temporarily unavailable.
+04/12/2020 17:48:33	|	426 Transfer aborted: Resource temporarily unavailable.
+04/12/2020 18:47:55	|	426 Transfer aborted: Resource temporarily unavailable.
+04/12/2020 19:24:52	|	[Errno 104] Connection reset by peer
+04/12/2020 22:10:22	|	
+05/12/2020 00:48:22	|	
+05/12/2020 04:47:52	|	
+05/12/2020 07:54:52	|	[Errno 104] Connection reset by peer
+05/12/2020 11:18:52	|	
+05/12/2020 13:22:53	|	
+05/12/2020 16:57:52	|	
+05/12/2020 20:24:22	|	
+05/12/2020 23:18:22	|	[Errno 111] Connection refused
+06/12/2020 01:31:52	|	
+06/12/2020 03:59:53	|	
+06/12/2020 06:27:53	|	
+06/12/2020 10:02:53	|	
+06/12/2020 13:31:53	|	
+06/12/2020 17:14:53	|	
+06/12/2020 19:43:53	|	
+06/12/2020 22:50:54	|	
+07/12/2020 01:34:24	|	
+07/12/2020 04:59:24	|	[Errno 111] Connection refused
+07/12/2020 07:13:25	|	
+07/12/2020 10:08:55	|	
+07/12/2020 13:48:56	|	
+07/12/2020 15:21:59	|	426 Transfer aborted: Resource temporarily unavailable.
+07/12/2020 16:30:55	|	
+07/12/2020 19:38:25	|	
+07/12/2020 23:29:25	|	
+08/12/2020 02:36:25	|	[Errno 111] Connection refused
+08/12/2020 04:55:25	|	
+08/12/2020 08:01:54	|	426 Transfer aborted: Resource temporarily unavailable.
+08/12/2020 12:24:57	|	[Errno 111] Connection refused
+08/12/2020 15:09:28	|	
+08/12/2020 16:01:19	|	421 Timeout (120 seconds): closing control connection
+08/12/2020 18:44:28	|	
+08/12/2020 18:45:50	|	426 Transfer aborted: Resource temporarily unavailable.
+08/12/2020 21:32:29	|	
+09/12/2020 00:37:00	|	
+09/12/2020 03:44:31	|	
+09/12/2020 06:08:50	|	426 Transfer aborted: Resource temporarily unavailable.
+09/12/2020 06:35:53	|	426 Transfer aborted: Resource temporarily unavailable.
+09/12/2020 07:22:01	|	
+09/12/2020 08:36:37	|	421 Timeout (120 seconds): closing control connection
+09/12/2020 10:23:02	|	
+09/12/2020 13:12:01	|	
+09/12/2020 15:30:17	|	426 Transfer aborted: Resource temporarily unavailable.
+09/12/2020 16:44:31	|	
+09/12/2020 20:25:31	|	
+09/12/2020 22:46:31	|	
+10/12/2020 01:18:01	|	
+10/12/2020 02:00:04	|	426 Transfer aborted: Resource temporarily unavailable.
+10/12/2020 04:29:01	|	
+10/12/2020 06:00:40	|	426 Transfer aborted: Resource temporarily unavailable.
+10/12/2020 06:48:54	|	426 Transfer aborted: Resource temporarily unavailable.
+10/12/2020 07:03:50	|	426 Transfer aborted: Resource temporarily unavailable.
+10/12/2020 10:30:31	|	
+10/12/2020 14:15:31	|	
+10/12/2020 15:57:48	|	426 Transfer aborted: Resource temporarily unavailable.
+10/12/2020 16:30:53	|	426 Transfer aborted: Resource temporarily unavailable.
+10/12/2020 18:37:01	|	
+10/12/2020 20:54:01	|	
+10/12/2020 23:05:01	|	
+11/12/2020 01:54:01	|	
+11/12/2020 02:00:05	|	426 Transfer aborted: Resource temporarily unavailable.
+11/12/2020 05:29:32	|	[Errno 111] Connection refused
+11/12/2020 05:29:50	|	426 Transfer aborted: Resource temporarily unavailable.
+11/12/2020 06:38:53	|	426 Transfer aborted: Resource temporarily unavailable.
+11/12/2020 06:47:51	|	426 Transfer aborted: Resource temporarily unavailable.
+11/12/2020 06:51:04	|	426 Transfer aborted: Resource temporarily unavailable.
+11/12/2020 08:15:02	|	[Errno 111] Connection refused
+11/12/2020 11:37:32	|	
+11/12/2020 13:47:02	|	
+11/12/2020 17:19:32	|	
+11/12/2020 18:24:27	|	426 Transfer aborted: Resource temporarily unavailable.
+11/12/2020 20:35:32	|	
+11/12/2020 23:36:02	|	
+12/12/2020 03:08:02	|	[Errno 111] Connection refused
+12/12/2020 06:09:02	|	
+12/12/2020 09:32:02	|	
+12/12/2020 11:46:02	|	
+12/12/2020 14:11:02	|	
+12/12/2020 17:36:32	|	
+12/12/2020 20:10:32	|	
+12/12/2020 23:39:02	|	
+13/12/2020 03:27:02	|	
+13/12/2020 06:40:02	|	
+13/12/2020 06:50:31	|	426 Transfer aborted: Resource temporarily unavailable.
+13/12/2020 09:20:02	|	
+13/12/2020 11:27:02	|	
+13/12/2020 14:24:32	|	
+13/12/2020 16:35:32	|	
+13/12/2020 19:16:02	|	
+13/12/2020 21:26:02	|	
+14/12/2020 00:45:32	|	
+14/12/2020 03:55:33	|	
+14/12/2020 05:57:33	|	
+14/12/2020 08:31:03	|	
+14/12/2020 10:42:03	|	
+14/12/2020 14:18:03	|	
+14/12/2020 18:04:03	|	
+14/12/2020 19:03:50	|	[Errno 104] Connection reset by peer
+14/12/2020 23:25:21	|	[Errno 111] Connection refused
+15/12/2020 02:43:22	|	
+15/12/2020 06:40:52	|	
+15/12/2020 09:28:39	|	
+15/12/2020 12:01:09	|	
+15/12/2020 15:00:40	|	
+15/12/2020 15:57:57	|	426 Transfer aborted: Resource temporarily unavailable.
+15/12/2020 16:07:00	|	426 Transfer aborted: Resource temporarily unavailable.
+15/12/2020 16:12:53	|	426 Transfer aborted: Resource temporarily unavailable.
+15/12/2020 16:16:04	|	426 Transfer aborted: Resource temporarily unavailable.
+15/12/2020 17:42:56	|	426 Transfer aborted: Resource temporarily unavailable.
+15/12/2020 18:07:10	|	426 Transfer aborted: Resource temporarily unavailable.
+15/12/2020 20:18:13	|	
+15/12/2020 23:03:14	|	
+15/12/2020 23:52:50	|	timed out
+16/12/2020 02:32:44	|	
+16/12/2020 06:32:44	|	
+16/12/2020 06:43:44	|	426 Transfer aborted: Resource temporarily unavailable.
+16/12/2020 09:29:46	|	
+16/12/2020 10:40:36	|	426 Transfer aborted: Resource temporarily unavailable.
+16/12/2020 13:13:17	|	
+16/12/2020 15:37:17	|	[Errno 111] Connection refused
+16/12/2020 17:39:38	|	426 Transfer aborted: Resource temporarily unavailable.
+16/12/2020 19:30:47	|	
+16/12/2020 22:47:18	|	
+17/12/2020 02:08:18	|	
+17/12/2020 04:32:49	|	
+17/12/2020 08:14:50	|	
+17/12/2020 12:01:50	|	[Errno 104] Connection reset by peer
+17/12/2020 15:11:51	|	
+17/12/2020 18:52:51	|	
+17/12/2020 22:37:21	|	
+18/12/2020 01:34:51	|	[Errno 104] Connection reset by peer
+18/12/2020 04:49:21	|	
+18/12/2020 08:13:21	|	
+18/12/2020 12:03:21	|	[Errno 111] Connection refused
+18/12/2020 15:06:51	|	
+18/12/2020 17:26:51	|	
+18/12/2020 19:55:51	|	[Errno 104] Connection reset by peer
+18/12/2020 23:43:21	|	
+19/12/2020 03:22:51	|	
+19/12/2020 06:05:24	|	
+19/12/2020 09:03:54	|	[Errno 111] Connection refused
+19/12/2020 12:30:25	|	
+19/12/2020 15:38:56	|	
+19/12/2020 18:03:26	|	
+19/12/2020 21:29:56	|	
+20/12/2020 00:58:26	|	
+20/12/2020 04:04:56	|	
+20/12/2020 07:15:57	|	
+20/12/2020 10:04:58	|	
+20/12/2020 13:36:58	|	
+20/12/2020 16:29:28	|	
+20/12/2020 20:26:28	|	
+20/12/2020 22:13:59	|	
+21/12/2020 02:09:29	|	
+21/12/2020 04:41:30	|	
+21/12/2020 07:13:30	|	
+21/12/2020 10:49:30	|	
+21/12/2020 14:46:02	|	
+21/12/2020 16:22:45	|	426 Transfer aborted: Resource temporarily unavailable.
+21/12/2020 16:46:38	|	426 Transfer aborted: Resource temporarily unavailable.
+21/12/2020 16:52:37	|	426 Transfer aborted: Resource temporarily unavailable.
+21/12/2020 17:55:45	|	426 Transfer aborted: Resource temporarily unavailable.
+21/12/2020 18:25:49	|	426 Transfer aborted: Resource temporarily unavailable.
+21/12/2020 20:04:02	|	
+21/12/2020 22:19:02	|	
+22/12/2020 01:03:32	|	
+22/12/2020 03:51:32	|	[Errno 111] Connection refused
+22/12/2020 07:50:33	|	
+22/12/2020 10:36:03	|	
+22/12/2020 14:01:33	|	
+22/12/2020 16:20:56	|	426 Transfer aborted: Resource temporarily unavailable.
+22/12/2020 16:23:47	|	426 Transfer aborted: Resource temporarily unavailable.
+22/12/2020 17:56:03	|	[Errno 111] Connection refused
+22/12/2020 18:17:56	|	426 Transfer aborted: Resource temporarily unavailable.
+22/12/2020 21:14:33	|	
+22/12/2020 23:42:03	|	
+23/12/2020 02:29:33	|	
+23/12/2020 05:15:33	|	
+23/12/2020 06:40:55	|	426 Transfer aborted: Resource temporarily unavailable.
+23/12/2020 08:07:03	|	
+23/12/2020 08:11:01	|	426 Transfer aborted: Resource temporarily unavailable.
+23/12/2020 09:25:22	|	426 Transfer aborted: Resource temporarily unavailable.
+23/12/2020 09:32:53	|	426 Transfer aborted: Resource temporarily unavailable.
