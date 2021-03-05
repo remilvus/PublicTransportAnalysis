@@ -1,125 +1,62 @@
-import os
 import time
 import ftplib
-import pickle
+import pathlib
+import traceback
 from datetime import datetime
 from io import BytesIO
 
-from googleapiclient.discovery import build
-from google_auth_oauthlib.flow import InstalledAppFlow
-from google.auth.transport.requests import Request
-from googleapiclient.http import MediaFileUpload
+from utilities.constants import RAW_DATA_PATH, GTFS_FILENAMES, DATA_PATH
+from utilities import gdrive
 
-# names of all GTFS files that are to be archived
-filenames = {'GTFS_KRK_T.zip', 'VehiclePositions_T.pb', 'TripUpdates_T.pb', 'TripUpdates_A.pb', 'GTFS_KRK_A.zip',
-             'ServiceAlerts_T.pb', 'ServiceAlerts_A.pb', 'VehiclePositions_A.pb'}
+SAVE_LOCAL = True
+SAVE_DRIVE = False
+GREEDY = True  # if false the script should check whether the file should be downloaded 
+# the check should be performed based on size of the file and time of last 
+# download time from inside of protobuffers can also be used
+
+# time between consequent downloads
+SHORT_SLEEP = 1  # if <GREEDY>
+LONG_SLEEP = 10  # if not <GREEDY>
+
+SAVE_METADATA = False
+
+assert SAVE_LOCAL or SAVE_DRIVE, "files aren't saved anywhere"
 
 #  time of last download
-last_pull = {name: -1 for name in filenames}
+last_pull = {name: -1 for name in GTFS_FILENAMES}
 #  contents of last file
-last_file = {name: None for name in filenames}
+last_file = {name: None for name in GTFS_FILENAMES}
 
-DATA_PATH = '../data'
-MIME_FOLDER = 'application/vnd.google-apps.folder'
-
-
-#  google drive management
-def get_credentials():
-    # If modifying these scopes, delete the file token.pickle.
-    scopes = ['https://www.googleapis.com/auth/drive']  # 'https://www.googleapis.com/auth/drive.metadata.readonly',
-
-    credentials = None
-    # The file token.pickle stores the user's access and refresh tokens, and is
-    # created automatically when the authorization flow completes for the first
-    # time.
-    if os.path.exists('../token.pickle'):
-        with open('../token.pickle', 'rb') as token:
-            credentials = pickle.load(token)
-    # If there are no (valid) credentials available, let the user log in.
-    if not credentials or not credentials.valid:
-        if credentials and credentials.expired and credentials.refresh_token:
-            credentials.refresh(Request())
-        else:
-            flow = InstalledAppFlow.from_client_secrets_file(
-                '../credentials.json', scopes)
-            credentials = flow.run_local_server(port=0)
-        # Save the credentials for the next run
-        with open('../token.pickle', 'wb') as token:
-            pickle.dump(credentials, token)
-
-    return credentials
+error_path = DATA_PATH.joinpath('collector_errors.txt')
 
 
-#  google drive management
-def get_folder(drive_client, name):
-    main_result = drive_client.list(q=f"mimeType='{MIME_FOLDER}' and name='{DATA_PATH}'",
-                                    fields='files/id, files/parents, files/name').execute()
-    parend_id = None  # for id of parent folder
-    if len(main_result['files']) == 0:
-        file_metadata = {
-            'name': DATA_PATH,
-            'mimeType': 'application/vnd.google-apps.folder'
-        }
-        file = drive_client.create(body=file_metadata,
-                                   fields='id').execute()
-        parend_id = file['id']
-    else:
-        assert len(main_result['files']) == 1
-        parend_id = main_result['files'][0]['id']
+def make_informative_name(source_tag, filename: str, file_info: dict):
+    extension = '.' + filename.split('.')[-1]
+    modify = file_info['modify']
+    create = file_info['create']
 
-    result = drive_client.list(q=f"mimeType='{MIME_FOLDER}' and name='{name}' and '{parend_id}' in parents",
-                               fields='files/id, files/parents, files/name').execute()
-
-    if len(result['files']) == 0:
-        file_metadata = {
-            'name': name,
-            'parents': [parend_id],
-            'mimeType': 'application/vnd.google-apps.folder'
-        }
-        file = drive_client.create(body=file_metadata,
-                                   fields='id').execute()
-        return file['id']
-    else:
-        assert len(result['files']) == 1
-        return result['files'][0]['id']
+    return "`".join([source_tag, modify, create]) + extension
 
 
-#  google drive management
-def save_to_drive(drive_client, file_path, filename, folder_name):
-    folder_id = get_folder(drive_client, folder_name)
-    # prepare file body
-    media_body = MediaFileUpload(filename=file_path, resumable=True)
-
-    # construct upload kwargs
-    create_kwargs = {
-        'body': {
-            'name': filename,
-            'parents': [folder_id]
-        },
-        'media_body': media_body,
-        'fields': 'id',
-    }
-
-    # send create request
-    drive_client.create(**create_kwargs).execute()
+def check_download() -> bool:  # todo
+    """checks whether it makes sense to download the file. Should return false
+       if the probability that the file has changed is low"""
+    pass
 
 
-def save_file(ftp: ftplib.FTP, filename: str, save_as: str, drive_client=None, delete_local=False):
-    assert not (drive_client is None and delete_local), "files won't be saved"
-
+def save_file(ftp: ftplib.FTP, filename: str, save_as: str, drive=None):
     if last_pull[filename] == save_as:
         return
 
-    # prepare folder/file names
-    folder, ext = filename.split('.')
-    local_filename = f'{save_as}.{ext}'
-    directory = os.path.join('data', folder)
+    # prepare directory for file
+    folder, _ = filename.split('.')
+    directory: pathlib.Path = RAW_DATA_PATH.joinpath(folder)
+    if not directory.exists():
+        directory.mkdir()
 
-    # check/prepare data folder
-    if not os.path.exists('../data'):
-        os.mkdir('../data')
-    if not os.path.exists(directory):
-        os.mkdir(directory)
+    if not GREEDY:
+        raise NotImplemented()  # todo
+        check_download()
 
     # retrieve file
     with BytesIO() as b:
@@ -131,51 +68,69 @@ def save_file(ftp: ftplib.FTP, filename: str, save_as: str, drive_client=None, d
         return
 
     # make local copy of the file
-    with open(fr'{directory}/{save_as}.{ext}', 'wb') as f:
+    with directory.joinpath(save_as).open('wb') as f:
         f.write(file_content)
 
-    file_path = os.path.join(directory, local_filename)
-    if drive_client is not None:
-        save_to_drive(drive_client, file_path, local_filename, folder)
+    file_path = directory.joinpath(save_as)
+    if drive is not None:
+        assert SAVE_DRIVE
+        drive.save_to_drive(file_path, save_as, folder)
 
     last_pull[filename] = save_as
     last_file[filename] = file_content
 
-    if delete_local:
-        os.remove(file_path)
+    if not SAVE_LOCAL:
+        file_path.unlink()  # removes local file
+
+
+def download_loop(drive: gdrive.Drive, ftp: ftplib.FTP, error_file):
+    while True:
+        timestamp = time.time()
+        try:
+            for filename, file_info in ftp.mlsd():
+                if filename not in GTFS_FILENAMES:
+                    continue
+                informative_name = make_informative_name(source_tag='KRK',
+                                                         filename=filename,
+                                                         file_info=file_info)
+                save_file(ftp, filename, informative_name, drive)
+        except ftplib.error_temp as err:
+            print(f'{datetime.now()}\ttimeout')
+            error_file.write(
+                f'{datetime.now()}`{type(err)}`{str(err)}`{repr(traceback.format_exc())}\n')
+            break
+        if GREEDY:
+            sleep_time = SHORT_SLEEP
+        else:
+            sleep_time = LONG_SLEEP
+
+        sleep_time += timestamp - time.time()
+        if sleep_time < 0:
+            sleep_time = 0
+        time.sleep(sleep_time)
 
 
 def main():
+    error_file = error_path.open('a')
+    error_file.write('=' * 20 + '\n')
+
     while True:
         try:
             ftp = ftplib.FTP('ztp.krakow.pl')
             ftp.login()
             ftp.cwd('pliki-gtfs')
 
-            credentials = get_credentials()
-            service = build('drive', 'v3', credentials=credentials)
             # get drive client
-            drive_client = service.files()
-            timestamp = time.time()
-            while True:
-                try:
-                    for filename, file_info in ftp.mlsd():
-                        if filename not in filenames:
-                            continue
-                        save_file(ftp, filename, file_info['modify'], drive_client, delete_local=True)
+            drive = None
+            if SAVE_DRIVE:
+                drive = gdrive.Drive()
 
-                    sleep_time = 25 + timestamp - time.time()
-                    if sleep_time < 0:
-                        sleep_time = 0
-                    time.sleep(sleep_time)
-                    timestamp = time.time()
-                except ftplib.error_temp:
-                    print(f'{datetime.now()}\ttimeout')
-                    break
+            download_loop(drive, ftp, error_file)
         except Exception as err:
-            with open('error_log.txt', 'a') as f:
-                f.write(f'{datetime.now()}\t|\t{repr(err)}\n\n')
+            error_file.write(
+                f'{datetime.now()}`{type(err)}`{str(err)}`{repr(traceback.format_exc())}\n')
 
 
 if __name__ == '__main__':
+    print('collector started')
     main()
