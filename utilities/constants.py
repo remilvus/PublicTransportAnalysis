@@ -22,7 +22,7 @@ INCOMING_AT = 0
 STOPPED_AT = 1
 IN_TRANSIT_TO = 2
 
-# contants from prototype (potentially unneeded)
+# constants from prototype (potentially unneeded)
 BUS_INFO_FOLDER = 'GTFS_KRK_A'
 TRAM_INFO_FOLDER = 'GTFS_KRK_T'
 BUS_POSITIONS_PATH = 'VehiclePositions_A'

@@ -10,8 +10,9 @@ from utilities import gdrive
 
 SAVE_LOCAL = True
 SAVE_DRIVE = False
-GREEDY = True  # if false the script should check whether the file should be downloaded 
-# the check should be performed based on size of the file and time of last 
+GREEDY = True
+# if false the script should check whether the file should be downloaded
+# the check should be performed based on size of the file and time of last
 # download time from inside of protobuffers can also be used
 
 # time between consequent downloads

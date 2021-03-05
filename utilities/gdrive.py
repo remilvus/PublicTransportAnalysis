@@ -12,7 +12,7 @@ TOKEN_PATH = AUTH_FOLDER.joinpath('token')
 CRED_PATH = AUTH_FOLDER.joinpath('credentials.json')
 
 
-class Drive():
+class Drive:
     def __init__(self):
         credentials = self._get_credentials()
         service = build('drive', 'v3', credentials=credentials)
@@ -21,13 +21,12 @@ class Drive():
     @staticmethod
     def _get_credentials():
         # If modifying these scopes, delete the file token.pickle.
-        scopes = [
-            'https://www.googleapis.com/auth/drive']  # 'https://www.googleapis.com/auth/drive.metadata.readonly',
+        scopes = ['https://www.googleapis.com/auth/drive']
 
         credentials = None
-        # The file token.pickle stores the user's access and refresh tokens, and is
-        # created automatically when the authorization flow completes for the first
-        # time.
+        # The file token.pickle stores the user's access and refresh tokens,
+        # and is created automatically when the authorization flow completes
+        # for the first time.
         if TOKEN_PATH.exists():
             with TOKEN_PATH.open(mode='rb') as token:
                 credentials = pickle.load(token)
@@ -41,9 +40,10 @@ class Drive():
                         CRED_PATH, scopes)
                 except FileNotFoundError:
                     if not AUTH_FOLDER.exists():
-                        AUTH_FOLDER.mkdir() # CREDENTIALS MUST BE HERE
+                        AUTH_FOLDER.mkdir()  # CREDENTIALS MUST BE HERE
                     raise FileNotFoundError(
-                        "No crecentials found. Help: https://developers.google.com/drive/api/v3/quickstart/python#step_3_set_up_the_sample")
+                        "No credentials found. Help: "
+                        "https://developers.google.com/drive/api/v3/quickstart/python#step_3_set_up_the_sample")
                 credentials = flow.run_local_server(port=0)
             # Save the credentials for the next run
             with open(TOKEN_PATH, 'wb') as token:
@@ -72,7 +72,8 @@ class Drive():
             parend_id = file['id']
         else:
             assert len(main_result[
-                           'files']) == 1, f'only one folder on the drive should be named {GDRIVE_DATA_PATH}'
+                           'files']) == 1, f'only one folder on the drive ' \
+                                           f'should be named {GDRIVE_DATA_PATH} '
             parend_id = main_result['files'][0]['id']
 
         result = self.drive_client.list(
@@ -87,7 +88,7 @@ class Drive():
             return result['files'][0]['id']
 
     def save_to_drive(self, file_path, filename, folder_name):
-        folder_id = self.get_folder(self.drive_client, folder_name)
+        folder_id = self.get_folder(folder_name)
         # prepare file body
         media_body = MediaFileUpload(filename=file_path, resumable=True)
 
