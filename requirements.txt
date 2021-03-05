@@ -6,3 +6,8 @@ pandas
 matplotlib
 tqdm
 urllib3
+
+# google drive
+google-api-python-client
+google-auth-httplib2
+google-auth-oauthlib
