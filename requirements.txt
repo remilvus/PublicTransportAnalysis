@@ -6,6 +6,7 @@ pandas
 matplotlib
 tqdm
 urllib3
+jupyter
 
 # google drive
 google-api-python-client
