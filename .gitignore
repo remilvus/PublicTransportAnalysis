@@ -5,6 +5,7 @@ credentials.json
 token.pickle
 auth
 /data/figures
+*.db
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -6,6 +6,11 @@ PROJECT_ROOT = Path(__file__).parent.parent
 DATA_PATH = PROJECT_ROOT.joinpath('data')
 RAW_DATA_PATH = DATA_PATH.joinpath('raw_data')
 RAW_METADATA_PATH = DATA_PATH.joinpath('raw_metadata')
+DATABASE_PATH = DATA_PATH.joinpath('databases')
+GTFS_DB_PATH = DATABASE_PATH.joinpath('gtfs.db')
+POSITIONS_DB_PATH = DATABASE_PATH.joinpath('vehicle_positions.db')
+UPDATES_DB_PATH = DATABASE_PATH.joinpath('trip_updates.db')
+ALERTS_DB_PATH = DATABASE_PATH.joinpath('alerts.db')
 
 AUTH_FOLDER = PROJECT_ROOT.joinpath('auth')
 
