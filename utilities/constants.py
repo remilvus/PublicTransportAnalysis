@@ -6,6 +6,9 @@ PROJECT_ROOT = Path(__file__).parent.parent
 DATA_PATH = PROJECT_ROOT.joinpath('data')
 RAW_DATA_PATH = DATA_PATH.joinpath('raw_data')
 RAW_METADATA_PATH = DATA_PATH.joinpath('raw_metadata')
+VEHICLE_POSITIONS_A_PATH = RAW_DATA_PATH.joinpath('VehiclePositions_A')
+# todo: add paths to all subfolders of 'raw_data' folder
+
 DATABASE_PATH = DATA_PATH.joinpath('databases')
 GTFS_DB_PATH = DATABASE_PATH.joinpath('gtfs.db')
 POSITIONS_DB_PATH = DATABASE_PATH.joinpath('vehicle_positions.db')
@@ -28,9 +31,5 @@ STOPPED_AT = 1
 IN_TRANSIT_TO = 2
 
 # constants from prototype (potentially unneeded)
-BUS_INFO_FOLDER = 'GTFS_KRK_A'
-TRAM_INFO_FOLDER = 'GTFS_KRK_T'
-BUS_POSITIONS_PATH = 'VehiclePositions_A'
-TRAM_POSITIONS_PATH = 'VehiclePositions_T'
 SEC_IN_DAY = 24 * 60 * 60
 
